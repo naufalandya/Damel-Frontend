@@ -1,0 +1,30 @@
+scrollbar.css
+
+/* WebKit */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: linear-gradient(to right, #1D1D1D, #282828); 
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #4B5563;
+    border-radius: 5px;
+}
+
+/* Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #4B5563 transparent;
+}
+
+*::-moz-scrollbar {
+    width: 10px;
+}
+
+*::-moz-scrollbar-thumb {
+    background-color: #4B5563; /* Warna thumb scrollbar di Firefox */
+    border-radius: 5px;
+}

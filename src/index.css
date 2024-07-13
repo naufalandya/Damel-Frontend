@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#root, html, body {
+    background-color: #1E1C1C;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow-y: scroll; /* Ini akan memaksa scrollbar untuk selalu muncul */
+}
