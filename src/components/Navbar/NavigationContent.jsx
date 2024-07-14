@@ -1,11 +1,9 @@
-import { Tabs, TabList, TabPanels, Tab, TabPanel, TabIndicator, Box, Text, useDisclosure } from '@chakra-ui/react';
-import { FaBrain, FaRocket, FaBookOpen } from "react-icons/fa";
+import { Tabs, TabList, TabPanels, Tab, TabPanel, TabIndicator, Box, Text} from '@chakra-ui/react';
+import { FaBrain, FaRocket } from "react-icons/fa";
 import { MdOutlineTimeline} from "react-icons/md";
 import { HiMiniChatBubbleBottomCenterText } from "react-icons/hi2";
 import { FaListCheck } from "react-icons/fa6";
 import { BsFillPencilFill } from "react-icons/bs";
-import { PiReadCvLogoFill } from "react-icons/pi";
-import { HiPaperClip } from "react-icons/hi";
 
 import RandomFeed from '../Content/Feed/RandomFeed';
 import SpeechFeed from '../Content/Feed/SpeechFeed';

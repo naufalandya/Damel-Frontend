@@ -1,7 +1,13 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Box, Avatar, Heading, Text, Stack, Flex } from '@chakra-ui/react';
+import { Box, Avatar, Heading, Text, Stack, Flex, Tabs, TabList, TabPanels, Tab, TabPanel  } from '@chakra-ui/react';
 import ReminderPost from './../components/Input/ReminderPost';
+import DiaryPost from './../components/Input/DiaryPost';
+import IdeaPost from './../components/Input/IdeaPost';
+
+import { FaListCheck } from "react-icons/fa6";
+import { BsFillPencilFill } from "react-icons/bs";
+import { RiText } from "react-icons/ri";
 
 const Profile = () => {
   const [profileData, setProfileData] = useState({
@@ -60,8 +66,58 @@ const Profile = () => {
           <Text>{profileData.bio}</Text>
         </Box>
       </Box>
-      <ReminderPost/>
+      <Box padding={0} width={'100%'}>
+            <Tabs>
+                <TabList>
+                        <Tab className='hover:bg-neutral-800 active:bg-neutral-800 flex gap-5
+                        ' flexGrow={1} paddingTop={7} paddingBottom={7} width={'50%'}>
+                            <RiText size={'2rem'} className='text-white'/>
+                            <Text className='text-white'>
+                                Thought & Idea
+                            </Text>
+                        </Tab>
+                        <Tab className='hover:bg-neutral-800 active:bg-neutral-800 flex gap-5
+                        ' flexGrow={1} paddingTop={7} paddingBottom={7} width={'50%'}>
+                            <FaListCheck size={'2rem'} className='text-white'/>
+                            <Text className='text-white'>
+                                Productivity
+                            </Text>
+                        </Tab>
+                        <Tab className='hover:bg-neutral-800 active:bg-neutral-800 flex gap-5' flexGrow={1} paddingTop={7} paddingBottom={7} width={'50%'}>
+                            <Text className='text-white'>
+                                <BsFillPencilFill size={'2rem'} className='text-white'/>
+                            </Text>
+                            <Text className='text-white'>
+                                Diary
+                            </Text>
+                        </Tab>
+                        {/* <Tab className='hover:bg-neutral-800 active:bg-neutral-800 flex gap-5' flexGrow={1} paddingTop={7} paddingBottom={7} width={'50%'}>
+                        <Text className='text-white'>
+                                <HiPaperClip size={'2rem'} className='text-white'/>
+                            </Text>
+                        <Text className='text-white'>
+                                Publication
+                        </Text>
+                    </Tab> */}
+                </TabList>
+
+                {/* Nested TWO */}
+                <TabPanels>
+                  <TabPanel p={0}>
+                    <IdeaPost/>                    
+                  </TabPanel>
+                    <TabPanel p={0}>      
+                      <ReminderPost/>                    
+                    </TabPanel>
+                    <TabPanel p={0}>
+                      <DiaryPost/>                    
+                    </TabPanel>
+                </TabPanels>
+            </Tabs>
+            </Box>
     </Flex>
+    
+ 
     </>
 
   );

@@ -12,6 +12,10 @@ export const theme = {
   transparent: 'transparent',
   current: 'currentColor',
   extend: {
+    zIndex: {
+      '1000': '1000',
+      '1050': '1050',
+    },
     colors: {
       // light mode
       tremor: {

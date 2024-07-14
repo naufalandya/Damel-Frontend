@@ -12,7 +12,7 @@ const RightFeature = () => {
                 <ChakraProvider theme={darkTheme}>
                     <Online/>
                 </ChakraProvider>
-                <div className="right-feature-content h-full"  style={{ height : '100%'}}>
+                <div className="right-feature-content">
                     <RandomQuote />
                     <Advertisement />
                     <RandomTips />

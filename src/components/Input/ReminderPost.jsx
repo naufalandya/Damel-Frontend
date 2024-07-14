@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify';
+import { useToast } from '@chakra-ui/react';
 import 'react-toastify/dist/ReactToastify.css';
-import './toastStyles.css'; // Import file CSS khusus
+import { useNavigate } from 'react-router-dom';
 
 const ReminderPost = () => {
   const [title, setTitle] = useState('');
@@ -10,58 +10,80 @@ const ReminderPost = () => {
   const [deadlineDate, setDeadlineDate] = useState('');
   const [deadlineTime, setDeadlineTime] = useState('');
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate()
+
+
+  const toast = useToast();
 
   const handleCreateReminder = async () => {
     const token = localStorage.getItem('token');
-    
+
     if (!title || !content || !deadlineDate || !deadlineTime) {
-      toast.warning("All fields are required.", { className: 'toast-dark', autoClose: 1000 });
+      toast({
+        title: "All fields are required.",
+        status: "warning",
+        duration: 3000,
+        isClosable: true,
+      });
       return;
     }
-    
+
     const deadlineDateTime = new Date(`${deadlineDate}T${deadlineTime}`);
-    
-    setLoading(true); // Set loading state to true
+
+    setLoading(true);
 
     try {
-      const response = await axios.post('http://localhost:5901/api/v1/feature/reminders', {
-        title,
-        content,
-        deadline_time: deadlineDateTime.toISOString(), // Set deadline_time in ISO format
-      }, {
-        headers: {
-          Authorization: `Bearer ${token}`,
+      const response = await axios.post(
+        'http://localhost:5901/api/v1/feature/reminders',
+        {
+          title,
+          content,
+          deadline_time: deadlineDateTime.toISOString(),
         },
-      });
-  
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
       if (response.status === 201) {
-        setTimeout(() => {
-          toast.success("Your reminder has been created successfully.", { className: 'toast-dark', autoClose: 1000 });
-          setLoading(false); // Set loading state to false
-        }, 500);
+        toast({
+          title: "Your reminder has been created successfully.",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
+        setLoading(false);
         setTitle('');
         setContent('');
         setDeadlineDate('');
         setDeadlineTime('');
+        navigate("/activity")
       } else {
-        setTimeout(() => {
-          toast.error("An error occurred while creating the reminder.", { className: 'toast-dark', autoClose: 1000 });
-          setLoading(false); // Set loading state to false
-        }, 500);
+        toast({
+          title: "An error occurred while creating the reminder.",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        });
+        setLoading(false);
       }
     } catch (error) {
       console.error('Error creating reminder:', error);
-      setTimeout(() => {
-        toast.error("An error occurred while creating the reminder.", { className: 'toast-dark', autoClose: 1000 });
-        setLoading(false); // Set loading state to false
-      }, 500);
+      toast({
+        title: "An error occurred while creating the reminder.",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+      setLoading(false);
     }
   };
 
   return (
-    <div className="bg-neutral-900 min-h-screen flex items-center justify-center">
+    <div className="min-h-screen flex items-center justify-center p-24">
       <div className="max-w-lg w-full bg-neutral-800 text-white rounded-lg shadow-lg p-8">
-        <ToastContainer position="bottom-center" autoClose={1000} hideProgressBar newestOnTop closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
         <div className="text-center">
           <h1 className="text-4xl text-white mb-4">Create Reminder</h1>
           <p className="text-lg text-neutral-400 mb-8">Fill in the details below to create a reminder.</p>
@@ -91,7 +113,6 @@ const ReminderPost = () => {
             <input
               id="deadlineDate"
               type="date"
-              style={{ colorScheme: 'dark' }}
               className="mt-1 block w-full px-3 py-2 border border-neutral-700 bg-neutral-600 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-white"
               value={deadlineDate}
               onChange={(e) => setDeadlineDate(e.target.value)}
@@ -102,7 +123,6 @@ const ReminderPost = () => {
             <input
               id="deadlineTime"
               type="time"
-              style={{ colorScheme: 'dark' }}
               className="mt-1 block w-full px-3 py-2 border border-neutral-700 bg-neutral-600 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-white"
               value={deadlineTime}
               onChange={(e) => setDeadlineTime(e.target.value)}

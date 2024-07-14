@@ -33,6 +33,8 @@ export default function SignInCard() {
         password,
       });
 
+      console.log(response.data.data)
+
       if (response.data && response.request.status === 201 && response.data.data.token) {
         toast({
           title: "Sign in successful.",
@@ -43,6 +45,8 @@ export default function SignInCard() {
         });
 
         localStorage.setItem('token', response.data.data.token);
+        localStorage.setItem('name', response.data.data.name);
+        localStorage.setItem('username', response.data.data.username);
 
         setTimeout(() => {
           navigate("/");

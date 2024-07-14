@@ -7,17 +7,19 @@ import RightFeature from '../components/RightContent/RightFeatureLayout';
 const Layout = () => {
   return (
     <ChakraProvider>
-      <div className='flex' style={{ height: '100%', width: '100%' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '20% 55% 25%', width: '100%',height:'100%' }}>
         {/* Sidebar */}
-        <div style={{ width: '20%', position: 'fixed', height: '100%' }}>
+        <div style={{ width: '20%' }}>
           <SimpleSidebar />
         </div>
+        
         {/* Main Content */}
-        <div id='content' className='flex' style={{ marginLeft: '20%', width: '55%', height: '100%', display: 'flex',  borderRight: '2px solid white' }}>
+        <div id='content' style={{ height: '100%', borderRight: '2px solid white', display: 'flex' }}>
           <Outlet />
         </div>
+        
         {/* Right Feature */}
-        <div className='h-full' style={{ width: '25%', height: '100%' }}>
+        <div style={{ height: '100%', width:'' }}>
           <ThemeProvider>
             <RightFeature />
           </ThemeProvider>
