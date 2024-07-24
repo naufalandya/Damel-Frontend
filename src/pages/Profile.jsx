@@ -20,7 +20,7 @@ const Profile = () => {
     const fetchProfileData = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('http://localhost:5901/api/v1/feature/user', {
+        const response = await axios.get('http://103.127.137.138:5901/api/v1/feature/user', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -73,14 +73,14 @@ const Profile = () => {
                         ' flexGrow={1} paddingTop={7} paddingBottom={7} width={'50%'}>
                             <RiText size={'2rem'} className='text-white'/>
                             <Text className='text-white'>
-                                Thought & Idea
+                               Learn & Speech
                             </Text>
                         </Tab>
                         <Tab className='hover:bg-neutral-800 active:bg-neutral-800 flex gap-5
                         ' flexGrow={1} paddingTop={7} paddingBottom={7} width={'50%'}>
                             <FaListCheck size={'2rem'} className='text-white'/>
                             <Text className='text-white'>
-                                Productivity
+                                Reminder
                             </Text>
                         </Tab>
                         <Tab className='hover:bg-neutral-800 active:bg-neutral-800 flex gap-5' flexGrow={1} paddingTop={7} paddingBottom={7} width={'50%'}>

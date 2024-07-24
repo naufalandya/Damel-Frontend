@@ -189,7 +189,7 @@ const SpeechFeed = () => {
           },
         }}
       >
-        <Button
+        {/* <Button
           className='text-white'
           color={'white'}
           _hover={{ backgroundColor: '#3b3b3b' }}
@@ -218,7 +218,7 @@ const SpeechFeed = () => {
           leftIcon={<BiShare className='text-white' />}
         >
           Share
-        </Button>
+        </Button> */}
       </CardFooter>
     </Card>
   );

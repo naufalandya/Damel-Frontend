@@ -1,19 +1,49 @@
+import { useState, useEffect } from 'react';
 import { FiUser } from 'react-icons/fi';
+import axios from 'axios';
 
 const RandomTips = () => {
-    const avatarSrc = ""; // URL avatar user
+    const [fact, setFact] = useState({});
+    const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        fetchFact();
+    }, []);
+
+    const fetchFact = async () => {
+        setLoading(true);
+        try {
+            const apiKey = '829HIQEG52F29HutkyyOdw==JmkxDf4aXmdiaEBj'; // Ganti dengan API key Anda
+            const response = await axios.get('https://api.api-ninjas.com/v1/facts', {
+                headers: {
+                    'X-API-KEY': apiKey,
+                },
+            });
+            if (response.data && response.data.length > 0) {
+                setFact(response.data[0]);
+            }
+        } catch (error) {
+            console.error('Error fetching fact:', error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const handleRefresh = () => {
+        fetchFact();
+    };
+
+    const avatarSrc = ""; // URL avatar user (if needed)
 
     return (
-        <div style={{ backgroundColor: '#1D1D1D', fontSize : '1rem' }} className="random-quote-card-container p-5 py-6">
+        <div style={{ backgroundColor: '#1D1D1D', fontSize : '1rem', borderBottom : '2px solid white' }} className="random-quote-card-container p-5 py-6">
             <div className="title-container flex items-center justify-between text-white">
                 <h3 style={ { fontSize : '1rem' }} className="title-random-quote">
                     Science Fact
                 </h3>
-                <a href="/">
-                    <p style={ { fontSize : '1rem' }} className="refresh ml-2">
-                        🔄
-                    </p>
-                </a>
+                <button onClick={handleRefresh} className="refresh ml-2" style={{ fontSize: '1rem', cursor: 'pointer', border: 'none', background: 'none' }}>
+                    {loading ? 'Refreshing...' : '🔄'}
+                </button>
             </div>
 
             <div className="content-information">
@@ -25,15 +55,15 @@ const RandomTips = () => {
                             <FiUser className="text-white" size={20} />
                         </div>
                     )}
-                    <h5 className="username text-white">username</h5>
+                    <h5 className="username text-white">{fact.author || 'Author'}</h5>
                 </div>
 
                 <p className="random-quote-content text-white text-sm text-justify" style={ { fontSize :'1rem'}}>
-                Did you know that a single bolt of lightning contains enough energy to toast 100,000 slices of bread? Lightning can reach temperatures of roughly 30,000 Kelvin (53,540 degrees Fahrenheit), which is five times hotter than the surface of the sun.
-</p>
+                    "{fact.fact || 'Fact text'}"
+                </p>
             </div>
         </div>
     );
-}
+};
 
 export default RandomTips;

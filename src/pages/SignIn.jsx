@@ -28,7 +28,7 @@ export default function SignInCard() {
   const handleSignIn = async () => {
     setLoading(true); // Set loading state to true
     try {
-      const response = await axios.post('http://localhost:5901/api/v1/auth/login', {
+      const response = await axios.post('http://103.127.137.138:5901/api/v1/auth/login', {
         email,
         password,
       });

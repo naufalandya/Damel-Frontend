@@ -189,7 +189,7 @@ const RandomFeed = () => {
           },
         }}
       >
-        <Button
+        {/* <Button
           className='text-white'
           color={'white'}
           _hover={{ backgroundColor: '#3b3b3b' }}
@@ -218,7 +218,7 @@ const RandomFeed = () => {
           leftIcon={<BiShare className='text-white' />}
         >
           Share
-        </Button>
+        </Button> */}
       </CardFooter>
     </Card>
   );

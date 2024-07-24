@@ -16,7 +16,6 @@ const ReminderPost = () => {
   const toast = useToast();
 
   const handleCreateReminder = async () => {
-    const token = localStorage.getItem('token');
 
     if (!title || !content || !deadlineDate || !deadlineTime) {
       toast({
@@ -32,9 +31,11 @@ const ReminderPost = () => {
 
     setLoading(true);
 
+    const token = localStorage.getItem('token');
+
     try {
       const response = await axios.post(
-        'http://localhost:5901/api/v1/feature/reminders',
+        'http://103.127.137.138:5901/api/v1/feature/reminders',
         {
           title,
           content,
@@ -46,6 +47,8 @@ const ReminderPost = () => {
           },
         }
       );
+
+      console.log(response)
 
       if (response.status === 201) {
         toast({

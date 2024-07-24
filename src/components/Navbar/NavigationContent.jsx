@@ -5,10 +5,11 @@ import { HiMiniChatBubbleBottomCenterText } from "react-icons/hi2";
 import { FaListCheck } from "react-icons/fa6";
 import { BsFillPencilFill } from "react-icons/bs";
 
-import RandomFeed from '../Content/Feed/RandomFeed';
-import SpeechFeed from '../Content/Feed/SpeechFeed';
+// import SpeechFeed from '../Content/Feed/SpeechFeed';
 import MyReminder from '../Content/Activity/MyReminder';
 import DiaryCard from '../Content/Activity/Diary';
+import FeedPost from '../Content/Home/Post';
+import FeedPostLearn from './../Content/Home/PostLearn';
 
 const NavigationContent = () => {
 
@@ -79,14 +80,14 @@ const NavigationContent = () => {
                 <TabIndicator height="2px" bg="blue.500" borderRadius="1px" />
                 <TabPanels>
                     <TabPanel width={'100%'} className='flex flex-col justify-center items-center mt-5'>
-                        <RandomFeed/>
+                        <FeedPostLearn/>
                     </TabPanel>
                     {/* <TabPanel>
 
                         
                     </TabPanel> */}
                     <TabPanel className='flex flex-col justify-center items-center mt-5'>
-                        <SpeechFeed/>
+                        <FeedPost/>
                     </TabPanel>
                 </TabPanels>
 
@@ -101,7 +102,7 @@ const NavigationContent = () => {
                         <Tab className='hover:bg-neutral-800 active:bg-neutral-800 flex gap-5' flexGrow={1} paddingTop={7} paddingBottom={7} width={'50%'}>
                             <FaListCheck size={'2rem'} className='text-white'/>
                             <Text className='text-white'>
-                                Productivity
+                                Reminder
                             </Text>
                         </Tab>
                         <Tab className='hover:bg-neutral-800 active:bg-neutral-800 flex gap-5' flexGrow={1} paddingTop={7} paddingBottom={7} width={'50%'}>

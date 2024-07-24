@@ -54,7 +54,7 @@ const TagFeed = () => {
             },
             }}
         >
-            <Button className='text-white'  color={'white'} _hover={{backgroundColor : '#3b3b3b'}} flex='1' variant='ghost' leftIcon={<BiLike className='text-white'/>}>
+            {/* <Button className='text-white'  color={'white'} _hover={{backgroundColor : '#3b3b3b'}} flex='1' variant='ghost' leftIcon={<BiLike className='text-white'/>}>
             Like
             </Button>
             <Button className='text-white' color={'white'} _hover={{backgroundColor : '#3b3b3b'}} flex='1' variant='ghost' leftIcon={<BiChat className='text-white' />}>
@@ -62,7 +62,7 @@ const TagFeed = () => {
             </Button>
             <Button className='text-white'  color={'white'} _hover={{backgroundColor : '#3b3b3b'}} flex='1' variant='ghost' leftIcon={<BiShare className='text-white'/>}>
             Share
-            </Button>
+            </Button> */}
         </CardFooter>
         </Card>
     )

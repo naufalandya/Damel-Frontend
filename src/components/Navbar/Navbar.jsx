@@ -14,7 +14,7 @@ const LinkItems = [
   { name: 'Activity', icon: IoStatsChartSharp, path: '/activity' },
   { name: 'Schedule', icon: FaCalendarAlt, path: '/schedule' },
   { name: 'Profile', icon: RxAvatar, path: '/profile' },
-  { name: 'Settings', icon: IoSettingsOutline, path: '/settings' },
+  // { name: 'Settings', icon: IoSettingsOutline, path: '/settings' },
   { name: 'Logout', icon: MdLogout, path: '/signin' },
 ];
 

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Card, CardHeader, CardBody, CardFooter, Flex, Box, Heading, IconButton, Button, Text } from '@chakra-ui/react';
 import { BsThreeDotsVertical } from 'react-icons/bs';
-import { BiLike, BiChat } from 'react-icons/bi';
+// import { BiLike, BiChat } from 'react-icons/bi';
 
 const DiaryCard = () => {
   const [diaries, setDiaries] = useState([]);
@@ -10,20 +10,21 @@ const DiaryCard = () => {
   useEffect(() => {
     const fetchDiaries = async () => {
       try {
-        const token = localStorage.getItem('token'); // Mendapatkan token dari localStorage atau tempat penyimpanan lainnya
-        const response = await axios.get('http://localhost:5901/api/v1/feature/diaries', {
+        const token = localStorage.getItem('token'); 
+        const response = await axios.get('http://103.127.137.138:5901/api/v1/feature/diaries', {
           headers: {
-            Authorization: `Bearer ${token}` // Menambahkan header Authorization dengan token Bearer
+            Authorization: `Bearer ${token}` 
           }
         });
-        setDiaries(response.data); // Mengatur data diary dari respons API
+        console.log(response)
+        setDiaries(response.data); 
       } catch (error) {
         console.error('Error fetching diaries:', error);
       }
     };
 
     fetchDiaries();
-  }, []); // Effect ini hanya dijalankan sekali setelah render pertama
+  }, []);
 
   return (
     <>
@@ -33,7 +34,6 @@ const DiaryCard = () => {
             <Flex spacing='4'>
               <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
                 <Box backgroundColor='#FCDC94' borderRadius='full' p='4'>
-                  {/* <Avatar name='Segun Adebayo' src='https://bit.ly/sage-adebayo' size='md' /> */}
                 </Box>
                 <Box>
                   <Heading fontSize='1.275rem' fontWeight='500' size='sm'>{diary.title}</Heading>
@@ -64,12 +64,12 @@ const DiaryCard = () => {
               },
             }}
           >
-            <Button className='text-white' color='white' _hover={{ backgroundColor: '#3b3b3b' }} flex='1' variant='ghost' leftIcon={<BiLike className='text-white' />}>
+            {/* <Button className='text-white' color='white' _hover={{ backgroundColor: '#3b3b3b' }} flex='1' variant='ghost' leftIcon={<BiLike className='text-white' />}>
               Like
             </Button>
             <Button className='text-white' color='white' _hover={{ backgroundColor: '#3b3b3b' }} flex='1' variant='ghost' leftIcon={<BiChat className='text-white' />}>
               Comment
-            </Button>
+            </Button> */}
           </CardFooter>
         </Card>
       ))}

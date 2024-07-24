@@ -7,7 +7,7 @@ import DiaryCard from '../components/Content/Activity/Diary';
 import { RiText } from 'react-icons/ri';
 import { FaListCheck } from "react-icons/fa6";
 import { BsFillPencilFill} from "react-icons/bs";
-import MyActivity from '../components/Content/Activity/MyActivity';
+import MyPost from '../components/Content/Activity/MyPost';
 
 const Activity = () => {
     return (
@@ -20,14 +20,14 @@ const Activity = () => {
                                     <RiText size={'2rem'} className='text-white'/>
                                 </Text>
                             <Text className='text-white'>
-                                    Thought & Idea
+                                    Learn & Speech
                             </Text>
                         </Tab>
                         <Tab className='hover:bg-neutral-800 active:bg-neutral-800 flex gap-5
                         ' flexGrow={1} paddingTop={7} paddingBottom={7} width={'50%'}>
                             <FaListCheck size={'2rem'} className='text-white'/>
                             <Text className='text-white'>
-                                Productivity
+                                Reminder
                             </Text>
                         </Tab>
                         <Tab className='hover:bg-neutral-800 active:bg-neutral-800 flex gap-5' flexGrow={1} paddingTop={7} paddingBottom={7} width={'50%'}>
@@ -43,7 +43,7 @@ const Activity = () => {
 
                 {/* Nested TWO */}
                 <TabPanels>
-                    <TabPanel><MyActivity/></TabPanel>
+                    <TabPanel><MyPost/></TabPanel>
                     <TabPanel><MyReminder/></TabPanel>
                     <TabPanel><DiaryCard/></TabPanel>
                 </TabPanels>

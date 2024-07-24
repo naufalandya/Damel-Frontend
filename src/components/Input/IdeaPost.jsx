@@ -62,12 +62,14 @@ const IdeaPost = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:5901/api/v1/feature/post', formData, {
+      const response = await axios.post('http://103.127.137.138:5901/api/v1/feature/post', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,
         },
       });
+
+      console.log(response.data)
   
       if (response.status === 201) {
         toast({
@@ -110,7 +112,6 @@ const IdeaPost = () => {
   };
 
   const handleTagsChange = (e) => {
-    // Split tags input into an array
     const tagsArray = e.target.value.split(',').map(tag => tag.trim());
     setTags(tagsArray);
   };

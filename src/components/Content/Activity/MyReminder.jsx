@@ -12,7 +12,7 @@ const MyReminders = () => {
         const fetchReminders = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const response = await axios.get('http://localhost:5901/api/v1/feature/reminders', {
+                const response = await axios.get('http://103.127.137.138:5901/api/v1/feature/reminders', {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
@@ -81,12 +81,12 @@ const MyReminders = () => {
                             },
                         }}
                     >
-                        <Button className='text-white' color={'white'} _hover={{ backgroundColor: '#3b3b3b' }} flex='1' variant='ghost' leftIcon={<BiLike className='text-white' />}>
+                        {/* <Button className='text-white' color={'white'} _hover={{ backgroundColor: '#3b3b3b' }} flex='1' variant='ghost' leftIcon={<BiLike className='text-white' />}>
                             Like
                         </Button>
                         <Button className='text-white' color={'white'} _hover={{ backgroundColor: '#3b3b3b' }} flex='1' variant='ghost' leftIcon={<BiChat className='text-white' />}>
                             Comment
-                        </Button>
+                        </Button> */}
                     </CardFooter>
                 </Card>
             ))}
