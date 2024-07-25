@@ -19,7 +19,7 @@ const DiaryPost = () => {
     setLoading(true); // Set loading state to true
 
     try {
-      const response = await axios.post('http://103.127.137.138:5901/api/v1/feature/diary', {
+      const response = await axios.post('https://damel-backend-production.up.railway.app/api/v1/feature/diary', {
         title,
         content,
       }, {

@@ -43,7 +43,7 @@ export default function SignUpCard() {
     }
 
     try {
-      const response = await axios.post('http://103.127.137.138:5901/api/v1/auth/register', {
+      const response = await axios.post('https://damel-backend-production.up.railway.app/api/v1/auth/register', {
         email,
         password,
         name,

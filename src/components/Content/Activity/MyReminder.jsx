@@ -12,7 +12,7 @@ const MyReminders = () => {
         const fetchReminders = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const response = await axios.get('http://103.127.137.138:5901/api/v1/feature/reminders', {
+                const response = await axios.get('http://localhost:5901/api/v1/feature/activity/reminders', {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }

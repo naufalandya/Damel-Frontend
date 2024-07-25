@@ -62,7 +62,7 @@ const IdeaPost = () => {
     }
 
     try {
-      const response = await axios.post('http://103.127.137.138:5901/api/v1/feature/post', formData, {
+      const response = await axios.post('https://damel-backend-production.up.railway.app/api/v1/feature/post', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,

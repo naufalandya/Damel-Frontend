@@ -1,27 +1,45 @@
-import{ useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import debounce from 'lodash/debounce'; 
+import axios from 'axios';
 
-const events = [
-  { title: 'Meeting', start: '2024-07-11T10:00:00', end: '2024-07-11T12:00:00' },
-  { title: 'Conference', start: '2024-07-12T09:00:00', end: '2024-07-12T10:30:00' },
-  { title: 'Lunch', start: '2024-07-13T12:00:00', end: '2024-07-13T13:00:00' },
-  { title: 'Workshop', start: '2024-07-14T14:00:00', end: '2024-07-14T16:00:00' },
-  { title: 'Webinar', start: '2024-07-15T17:00:00', end: '2024-07-15T18:30:00' },
-  { title: 'Team Meeting', start: '2024-07-16', end: '2024-07-16' },
-  { title: 'Project Deadline', start: '2024-07-16', end: '2024-07-17' },
-  { title: 'Client Call', start: '2024-07-18T15:00:00', end: '2024-07-18T15:30:00' },
-  { title: 'Review', start: '2024-07-19T13:00:00', end: '2024-07-19T14:00:00' },
-  { title: 'Planning Session', start: '2024-07-20T11:00:00', end: '2024-07-20T12:00:00' },
-  { title: 'Planning Session', start: '2024-07-20T11:00:00', end: '2024-07-20T12:00:00' },
-  { title: 'Planning Session', start: '2024-07-20T11:00:00', end: '2024-07-20T12:00:00' }
-];
-
-function MySchedule() {
+const MySchedule = () => {
   const calendarRef = useRef(null);
+  const [reminders, setReminders] = useState([]);
+
+  const token = localStorage.getItem('token');
+
+  useEffect(() => {
+    const fetchReminders = async () => {
+      try {
+        const response = await axios.get('http://localhost:5901/api/v1/feature/activity/reminders',         {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        console.log(response.data); // Log the response data
+        if (Array.isArray(response.data)) {
+          const formattedReminders = response.data.map(reminder => ({
+            title: reminder.title,
+            start: reminder.deadline_time,
+            end: reminder.deadline_time,
+            created_at: reminder.created_at
+          }));
+          setReminders(formattedReminders);
+        } else {
+          console.error('Unexpected response data format:', response.data);
+        }
+      } catch (error) {
+        console.error('Error fetching reminders:', error);
+      }
+    };
+
+    fetchReminders();
+  }, []);
 
   useEffect(() => {
     const resizeCalendar = debounce(() => {
@@ -40,14 +58,14 @@ function MySchedule() {
   }, []);
 
   return (
-    <div style={{ width: '100%', padding: '1rem', height : '100%' }}>
+    <div style={{ width: '100%', padding: '1rem', height: '100%' }}>
       <FullCalendar
         ref={calendarRef}
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-        initialView={'dayGridMonth'}
-        events={events}
+        initialView='dayGridMonth'
+        events={reminders}
         eventContent={renderEventContent}
-        height={'100vh'}
+        height='100vh'
       />
     </div>
   );

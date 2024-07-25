@@ -23,14 +23,14 @@ const FeedPostLearn = () => {
         const fetchPosts = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const response = await axios.get('http://103.127.137.138:5901/api/v1/feature/feed/post-learn', {
+                const response = await axios.get('https://damel-backend-production.up.railway.app/api/v1/feature/feed/post-learn', {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
                 });
                 setPosts(response.data.posts);
 
-                // const userResponse = await axios.get('http://103.127.137.138:5901/api/v1/user/current', {
+                // const userResponse = await axios.get('https://damel-backend-production.up.railway.app/api/v1/user/current', {
                 //     headers: {
                 //         Authorization: `Bearer ${token}`
                 //     }
@@ -47,7 +47,7 @@ const FeedPostLearn = () => {
     // const handleLike = async (postId) => {
     //     try {
     //         const token = localStorage.getItem('token');
-    //         await axios.post('http://103.127.137.138:5901/api/v1/feature/like', { postId }, {
+    //         await axios.post('https://damel-backend-production.up.railway.app/api/v1/feature/like', { postId }, {
     //             headers: {
     //                 Authorization: `Bearer ${token}`
     //             }
@@ -77,7 +77,7 @@ const FeedPostLearn = () => {
     // const handleUnlike = async (postId) => {
     //     try {
     //         const token = localStorage.getItem('token');
-    //         await axios.post('http://103.127.137.138:5901/api/v1/feature/unlike', { postId }, {
+    //         await axios.post('https://damel-backend-production.up.railway.app/api/v1/feature/unlike', { postId }, {
     //             headers: {
     //                 Authorization: `Bearer ${token}`
     //             }
