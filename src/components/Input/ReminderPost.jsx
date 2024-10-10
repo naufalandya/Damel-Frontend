@@ -35,7 +35,7 @@ const ReminderPost = () => {
 
     try {
       const response = await axios.post(
-        'https://damel-backend-production.up.railway.app/api/v1/feature/reminders',
+        `${import.meta.env.VITE_API_URL}/api/v1/feature/reminders`,
         {
           title,
           content,

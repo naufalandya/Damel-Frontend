@@ -11,7 +11,7 @@ const DiaryCard = () => {
     const fetchDiaries = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('https://damel-backend-production.up.railway.app/api/v1/feature/activity/diaries', {
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/feature/activity/diaries`, {
           headers: {
             Authorization: `Bearer ${token}`
           }

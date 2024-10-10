@@ -15,7 +15,7 @@ const MySchedule = () => {
   useEffect(() => {
     const fetchReminders = async () => {
       try {
-        const response = await axios.get('https://damel-backend-production.up.railway.app/api/v1/feature/activity/reminders',         {
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/feature/activity/reminders`,         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -39,6 +39,7 @@ const MySchedule = () => {
     };
 
     fetchReminders();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {

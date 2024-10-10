@@ -62,15 +62,13 @@ const IdeaPost = () => {
     }
 
     try {
-      const response = await axios.post('https://damel-backend-production.up.railway.app/api/v1/feature/post', formData, {
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/feature/post`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,
         },
       });
 
-      console.log(response.data)
-  
       if (response.status === 201) {
         toast({
           title: 'Success',
@@ -85,9 +83,10 @@ const IdeaPost = () => {
         setCategory('LEARN');
         setImage(null);
       } else {
+        console.log(response.data.error)
         toast({
           title: 'Error',
-          description: 'An error occurred while creating the Post.',
+          description: `${response.data.error}`,
           status: 'error',
           duration: 3000,
           isClosable: true,
@@ -98,7 +97,7 @@ const IdeaPost = () => {
       console.error('Error creating Post:', error);
       toast({
         title: 'Error',
-        description: 'An error occurred while creating the Post.',
+        description: `${error.response.data.error}`,
         status: 'error',
         duration: 3000,
         isClosable: true,

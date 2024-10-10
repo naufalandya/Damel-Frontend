@@ -22,7 +22,7 @@ const MyPost = () => {
     const fetchPosts = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('https://damel-backend-production.up.railway.app/api/v1/feature/post', {
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/feature/post`, {
           headers: {
             Authorization: `Bearer ${token}`
           }

@@ -23,7 +23,7 @@ const FeedPost = () => {
     const fetchPosts = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('https://damel-backend-production.up.railway.app/api/v1/feature/feed/post-speech', {
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/feature/feed/post-speech`, {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -46,65 +46,6 @@ const FeedPost = () => {
     fetchPosts();
   }, []);
 
-  // const handleLike = async (postId) => {
-  //   try {
-  //     const token = localStorage.getItem('token');
-  //     await axios.post('https://damel-backend-production.up.railway.app/api/v1/feature/like', { postId }, {
-  //       headers: {
-  //         Authorization: `Bearer ${token}`
-  //       }
-  //     });
-  //     setPosts(posts.map(post => post.id === postId 
-  //       ? { 
-  //           ...post, 
-  //           likedByCurrentUser: true, 
-  //           _count: { 
-  //             ...post._count, 
-  //             likes: post._count.likes + 1 
-  //           } 
-  //         } 
-  //       : post
-  //     ));
-  //   } catch (error) {
-  //     toast({
-  //       title: "Like action failed.",
-  //       description: `${error.response.data.message}`,
-  //       status: "error",
-  //       duration: 1000,
-  //       isClosable: true,
-  //     });    
-  //   }
-  // };
-
-  // const handleUnlike = async (postId) => {
-  //   try {
-  //     const token = localStorage.getItem('token');
-  //     await axios.post('https://damel-backend-production.up.railway.app/api/v1/feature/unlike', { postId }, {
-  //       headers: {
-  //         Authorization: `Bearer ${token}`
-  //       }
-  //     });
-  //     setPosts(posts.map(post => post.id === postId 
-  //       ? { 
-  //           ...post, 
-  //           likedByCurrentUser: false, 
-  //           _count: { 
-  //             ...post._count, 
-  //             likes: post._count.likes - 1 
-  //           } 
-  //         } 
-  //       : post
-  //     ));
-  //   } catch (error) {
-  //     toast({
-  //       title: "Unlike action failed.",
-  //       description: `${error.response.data.message}`,
-  //       status: "error",
-  //       duration: 1000,
-  //       isClosable: true,
-  //     });
-  //   }
-  // };
 
   const renderAvatar = (avatarLink) => {
     return (
